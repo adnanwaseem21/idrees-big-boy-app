@@ -10,7 +10,7 @@ struct ParentApp: App {
         WindowGroup {
             ParentHomeView()
                 .environmentObject(store)
-                .tint(Color(red: 0.14, green: 0.35, blue: 0.22))   // Idrees forest green
+                .tint(Brand.accent)
         }
     }
 }

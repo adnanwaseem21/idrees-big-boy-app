@@ -39,16 +39,18 @@ struct ParentHomeView: View {
                     }
                 }
 
-                Section("Faith") {
-                    NavigationLink { PrayerSettingsView() } label: {
-                        row("🕌", "Prayer", detail: methodName(store.settings.prayerMethod))
-                    }
-                    NavigationLink { LocationSettingsView() } label: {
-                        row("📍", "Home location")
+                if Brand.islamicFeatures {
+                    Section("Faith") {
+                        NavigationLink { PrayerSettingsView() } label: {
+                            row("🕌", "Prayer", detail: methodName(store.settings.prayerMethod))
+                        }
+                        NavigationLink { LocationSettingsView() } label: {
+                            row("📍", "Home location")
+                        }
                     }
                 }
 
-                Section("Idrees") {
+                Section(store.settings.childName) {
                     NavigationLink { ReviewView() } label: { row("📈", "His week") }
                 }
 
@@ -58,7 +60,7 @@ struct ParentHomeView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Idrees")
+            .navigationTitle(Brand.shortName)
         }
     }
 

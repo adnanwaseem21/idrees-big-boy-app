@@ -35,7 +35,7 @@ struct FamilySettings: Codable, Equatable {
     /// changes until the parent edits something.
     static var defaults: FamilySettings {
         FamilySettings(
-            childName: "Idrees",
+            childName: Brand.defaultChildName,
             parents: [
                 ParentSetting(id: "mom", name: "Mom", emoji: "👩", phone: "+1 555 555 0100"),
                 ParentSetting(id: "dad", name: "Dad", emoji: "👨", phone: "+1 555 555 0101"),

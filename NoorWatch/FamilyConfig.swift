@@ -4,7 +4,7 @@ import Adhan
 /// Everything a parent would change lives in this file. Edit it, then press
 /// Run in Xcode again to put the new version on the watch.
 enum FamilyConfig {
-    static let childName = "Idrees"
+    static let childName = Brand.defaultChildName
 
     // MARK: Parents
 
