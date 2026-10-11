@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="iW monogram with crescent and star">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#235a39"/>
+      <stop offset="1" stop-color="#143a25"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" rx="230" fill="url(#bg)"/>
+
+  <!-- Crescent cradle: a white disc with a bg-colored disc laid over its top -->
+  <circle cx="512" cy="648" r="250" fill="#ffffff" opacity="0.95"/>
+  <circle cx="512" cy="582" r="250" fill="url(#bg)"/>
+
+  <!-- W in Kaushan Script -->
+  <text x="565" y="560" font-family="Kaushan Script" font-size="320" fill="#ffffff" text-anchor="middle">W</text>
+
+  <!-- Dotless i, stretched taller (scaled about its baseline) -->
+  <g transform="translate(360 560) scale(1,1.34) translate(-360,-560)">
+    <text x="360" y="560" font-family="Kaushan Script" font-size="320" fill="#ffffff" text-anchor="middle">&#305;</text>
+  </g>
+
+  <!-- Star as the dot, lifted above the taller i -->
+  <g transform="translate(364 300)" fill="#ffffff">
+    <path d="M 0 -30 l 9 19 21 2 -16 14 5 21 -19 -11 -19 11 5 -21 -16 -14 21 -2 Z"/>
+  </g>
+</svg>
