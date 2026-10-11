@@ -8,9 +8,15 @@ struct ParentApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ParentHomeView()
-                .environmentObject(store)
-                .tint(Brand.accent)
+            Group {
+                if store.settings.setupComplete {
+                    ParentHomeView()
+                } else {
+                    OnboardingView()
+                }
+            }
+            .environmentObject(store)
+            .tint(Brand.accent)
         }
     }
 }

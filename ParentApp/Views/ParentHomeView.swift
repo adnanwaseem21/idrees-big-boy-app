@@ -39,7 +39,7 @@ struct ParentHomeView: View {
                     }
                 }
 
-                if Brand.islamicFeatures {
+                if store.settings.faithFeaturesOn {
                     Section("Faith") {
                         NavigationLink { PrayerSettingsView() } label: {
                             row("🕌", "Prayer", detail: methodName(store.settings.prayerMethod))
@@ -54,8 +54,13 @@ struct ParentHomeView: View {
                     NavigationLink { ReviewView() } label: { row("📈", "His week") }
                 }
 
+                Section("App") {
+                    NavigationLink { FeaturesView() } label: { row("⚙️", "Features") }
+                    NavigationLink { HelpView() } label: { row("⌚", "Set up the watch") }
+                }
+
                 Section {
-                    Text("Changes sync to Idrees's watch through iCloud. They reach the watch the next time it has signal.")
+                    Text("Changes sync to \(store.settings.childName)'s watch through iCloud. They reach the watch the next time it has signal.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }

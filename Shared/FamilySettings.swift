@@ -8,6 +8,14 @@ import Foundation
 /// In Xcode, tick both targets under "Target Membership" for every file in
 /// this Shared/ folder.
 struct FamilySettings: Codable, Equatable {
+    /// False until the parent finishes first-run setup. The watch can show a
+    /// "ask a parent to finish setup" state while this is false.
+    var setupComplete: Bool = false
+
+    /// Each family chooses whether to include the Islamic features (prayer,
+    /// Qibla, duas, adhan). Starts from the build's Brand default.
+    var faithFeaturesOn: Bool = Brand.islamicFeatures
+
     var childName: String
 
     var parents: [ParentSetting]
@@ -35,6 +43,8 @@ struct FamilySettings: Codable, Equatable {
     /// changes until the parent edits something.
     static var defaults: FamilySettings {
         FamilySettings(
+            setupComplete: false,
+            faithFeaturesOn: Brand.islamicFeatures,
             childName: Brand.defaultChildName,
             parents: [
                 ParentSetting(id: "mom", name: "Mom", emoji: "👩", phone: "+1 555 555 0100"),
