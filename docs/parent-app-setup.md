@@ -24,19 +24,22 @@ over the family's iCloud — no server, no monthly fee.
    **+ Capability → iCloud** → turn on **Key-value storage**. Use the **same
    iCloud container** for both so they share data.
 
-## Wire the watch to use it (the remaining step)
+## Watch ↔ parent wiring (done)
 
-Right now the watch reads its settings from `FamilyConfig.swift` (hard-coded).
-To make the parent app actually drive the watch, the watch needs to read
-`FamilySettings` from the shared `SettingsStore` instead, and write Idrees's
-daily totals into `KidProgress`. Planned changes on the watch side:
+The watch now reads its settings live from the shared store instead of
+hard-coded values, and reports progress back:
 
-- Replace reads of `FamilyConfig.tasks/schedule/rewards/...` with
-  `settingsStore.settings.*`.
-- After each prayer/chore is ticked, write a `DaySummary` for today into the
-  `kidProgress` iCloud key (mirroring what `KidStore` already tracks locally).
+- `FamilyConfig` (watch) is a thin bridge over `LiveSettings.shared`, which
+  reads the same `familySettings` iCloud key the parent app writes. Change a
+  setting on the phone and the watch reflects it. Property names are
+  unchanged, so the rest of the watch code was untouched.
+- `KidStore` writes today's totals (prayers, chores, points) into the
+  `kidProgress` iCloud key via `KidProgressWriter` after every change; the
+  parent app's "His week" reads them.
+- Faith features on the watch follow the per-family `faithFeaturesOn` setting.
 
-Until that wiring is done, the parent app runs and saves settings on its own,
-and the watch keeps using `FamilyConfig`. Both build and run in the
-simulators today; the wiring is the next watch-side task once the watch
-arrives and we can test end to end.
+**Still to verify in Xcode** (needs a Mac + ideally the watch): build both
+targets, confirm `Shared/` files are in both, turn on the iCloud key-value
+capability with one shared container, and watch a change on the phone appear
+on the watch. The logic is in place; it just hasn't been compiled or run on a
+device from here.

@@ -13,7 +13,7 @@ struct HomeView: View {
                 }
                 .listRowBackground(Color.clear)
 
-                if Brand.islamicFeatures {
+                if FamilyConfig.faithFeaturesOn {
                     NavigationLink { PrayerView() } label: {
                         MenuRow(emoji: "🕌", title: "Prayer", detail: "\(store.log().prayed.count) of 5 today")
                     }
@@ -22,7 +22,7 @@ struct HomeView: View {
                     MenuRow(emoji: "✅", title: "Chores & Activities", detail: "\(doneToday) of \(store.tasks().count) done")
                 }
                 NavigationLink { ScheduleView() } label: {
-                    MenuRow(emoji: "📅", title: "My Day", detail: Brand.islamicFeatures ? "Schedule & prayer times" : "Your schedule")
+                    MenuRow(emoji: "📅", title: "My Day", detail: FamilyConfig.faithFeaturesOn ? "Schedule & prayer times" : "Your schedule")
                 }
                 NavigationLink { CallParentsView() } label: {
                     MenuRow(emoji: "📞", title: "Call " + FamilyConfig.parents.map(\.name).joined(separator: " & "))
@@ -30,7 +30,7 @@ struct HomeView: View {
                 NavigationLink { VoiceNotesView() } label: {
                     MenuRow(emoji: "🎙️", title: "Voice Notes")
                 }
-                if Brand.islamicFeatures {
+                if FamilyConfig.faithFeaturesOn {
                     NavigationLink { DuaView() } label: {
                         MenuRow(emoji: "🤲", title: "Dua & Dhikr", detail: IslamicContent.duaOfTheDay().occasion)
                     }
@@ -78,14 +78,14 @@ struct NextPrayerCard: View {
         VStack(alignment: .leading, spacing: 2) {
             Text("\(Brand.greeting), \(FamilyConfig.childName)!")
                 .font(.headline)
-            if Brand.islamicFeatures, let next = prayers.nextPrayer(after: now) {
+            if FamilyConfig.faithFeaturesOn, let next = prayers.nextPrayer(after: now) {
                 Text("\(next.salah.name) at \(next.time.formatted(date: .omitted, time: .shortened))")
                     .font(.caption)
                 Text("in \(next.time, style: .relative)")
                     .font(.caption2)
                     .foregroundStyle(.green)
             }
-            if Brand.islamicFeatures {
+            if FamilyConfig.faithFeaturesOn {
                 Text("⭐ \(store.totalPoints)   🔥 \(store.prayerStreak)-day streak")
                     .font(.caption2)
             } else {

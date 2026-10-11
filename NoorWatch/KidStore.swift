@@ -120,6 +120,20 @@ final class KidStore: ObservableObject {
         if let data = try? JSONEncoder().encode(saved) {
             try? data.write(to: fileURL, options: .atomic)
         }
+        mirrorTodayToParent()
+    }
+
+    /// Sends today's totals to the parent app's "His week" over iCloud.
+    private func mirrorTodayToParent() {
+        let today = Date()
+        let day = log(for: today)
+        let summary = DaySummary(
+            prayersCompleted: day.prayed.count,
+            tasksDone: day.doneTasks.count,
+            tasksTotal: tasks(on: today).count,
+            points: day.points,
+            dhikr: day.tasbih)
+        KidProgressWriter.record(summary, for: today)
     }
 
     private static func key(for date: Date) -> String {

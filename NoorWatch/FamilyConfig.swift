@@ -1,100 +1,84 @@
 import Foundation
 import Adhan
 
-/// Everything a parent would change lives in this file. Edit it, then press
-/// Run in Xcode again to put the new version on the watch.
+/// The watch reads its settings through here. Values come live from the
+/// family's iCloud (written by the parent app), falling back to sensible
+/// defaults before anything syncs. Property names and types are unchanged, so
+/// the rest of the watch code stays the same whether settings are hard-coded
+/// or synced.
 enum FamilyConfig {
-    static let childName = Brand.defaultChildName
+    private static var s: FamilySettings { LiveSettings.shared.current }
 
-    // MARK: Parents
+    static var childName: String { s.childName }
+    static var faithFeaturesOn: Bool { s.faithFeaturesOn }
 
-    static let parents: [Parent] = [
-        Parent(name: "Mom", emoji: "👩", phone: "+1 555 555 0100"),
-        Parent(name: "Dad", emoji: "👨", phone: "+1 555 555 0101"),
-    ]
+    // MARK: Parents & messages
 
-    static let quickMessages = [
-        "Please pick me up",
-        "I'm OK 👍",
-        "I'm running late",
-        "I got to school",
-        "I love you ❤️",
-    ]
+    static var parents: [Parent] {
+        s.parents.map { Parent(name: $0.name, emoji: $0.emoji, phone: $0.phone) }
+    }
+    static var quickMessages: [String] { s.quickMessages.map(\.text) }
 
     // MARK: Prayer
 
-    /// .northAmerica is ISNA. Others: .muslimWorldLeague, .ummAlQura,
-    /// .egyptian, .karachi, .moonsightingCommittee
-    static let calculationMethod: CalculationMethod = .northAmerica
-    /// .shafi is the standard (earlier) Asr, .hanafi the later one.
-    static let madhab: Madhab = .shafi
-    /// File name of an adhan sound added to the project (e.g. "adhan.caf",
-    /// under 30 seconds). nil plays the normal chime, which suits school.
-    static let prayerSoundFile: String? = nil
-    /// Used until the watch gets its first location fix (Paterson, NJ).
-    static let fallbackLatitude = 40.9168
-    static let fallbackLongitude = -74.1718
-    static let pointsPerPrayer = 10
+    static var calculationMethod: CalculationMethod {
+        switch s.prayerMethod {
+        case "muslimWorldLeague": .muslimWorldLeague
+        case "ummAlQura": .ummAlQura
+        case "egyptian": .egyptian
+        case "karachi": .karachi
+        case "moonsightingCommittee": .moonsightingCommittee
+        default: .northAmerica
+        }
+    }
+    static var madhab: Madhab { s.madhab == "hanafi" ? .hanafi : .shafi }
+    /// When the parent turns the adhan on, the watch looks for "adhan.caf" in
+    /// the bundle; add that file to play it, otherwise it uses the chime.
+    static var prayerSoundFile: String? { s.adhanOn ? "adhan.caf" : nil }
+    static var fallbackLatitude: Double { s.homeLatitude }
+    static var fallbackLongitude: Double { s.homeLongitude }
+    static var pointsPerPrayer: Int { s.pointsPerPrayer }
 
-    // MARK: Chores and daily activities
-    // Weekdays: 1 = Sunday ... 7 = Saturday. A reminder pops up at that time.
+    // MARK: Chores, activities, schedule, rewards
 
-    static let tasks: [TaskItem] = [
-        TaskItem(id: "bed", title: "Make your bed", emoji: "🛏️", kind: .chore, points: 5, reminder: ClockTime(7, 10)),
-        TaskItem(id: "teeth-am", title: "Brush teeth (morning)", emoji: "🪥", kind: .chore, points: 5),
-        TaskItem(id: "table", title: "Help set the table", emoji: "🍽️", kind: .chore, points: 5),
-        TaskItem(id: "room", title: "Tidy your room", emoji: "🧹", kind: .chore, points: 10, reminder: ClockTime(11), days: Weekdays.weekend),
-        TaskItem(id: "bag", title: "Pack school bag", emoji: "🎒", kind: .chore, points: 5, reminder: ClockTime(20), days: [1, 2, 3, 4, 5]),
-        TaskItem(id: "teeth-pm", title: "Brush teeth (night)", emoji: "🪥", kind: .chore, points: 5, reminder: ClockTime(20, 45)),
+    static var tasks: [TaskItem] {
+        s.tasks.map { t in
+            TaskItem(id: t.id, title: t.title, emoji: t.emoji,
+                     kind: TaskKind(rawValue: t.kind) ?? .activity,
+                     points: t.points,
+                     reminder: t.reminderHour.map { ClockTime($0, t.reminderMinute) },
+                     days: Set(t.days))
+        }
+    }
 
-        TaskItem(id: "quran", title: "Quran practice (10 min)", emoji: "📖", kind: .activity, points: 10, reminder: ClockTime(17, 30)),
-        TaskItem(id: "homework", title: "Homework", emoji: "✏️", kind: .activity, points: 10, days: Weekdays.school),
-        TaskItem(id: "read", title: "Read a book (20 min)", emoji: "📚", kind: .activity, points: 10),
-        // Karate is on weekends for now. If a week changes, just tick it off
-        // on the day it actually happens, or edit the days here.
-        TaskItem(id: "karate", title: "Karate practice", emoji: "🥋", kind: .activity, points: 10, reminder: ClockTime(10, 30), days: Weekdays.weekend),
-        TaskItem(id: "outside", title: "Play outside", emoji: "⚽", kind: .activity, points: 5),
-        TaskItem(id: "freeplay", title: "Free play / build something", emoji: "🧩", kind: .activity, points: 5),
-        TaskItem(id: "duas", title: "Morning & evening duas", emoji: "🤲", kind: .activity, points: 5),
-        TaskItem(id: "kind", title: "Do a kind deed", emoji: "💚", kind: .activity, points: 10),
-    ]
+    static var schedule: [ScheduleItem] {
+        s.schedule.map { e in
+            ScheduleItem(title: e.title, emoji: e.emoji, time: ClockTime(e.hour, e.minute),
+                         days: Set(e.days), remindMinutesBefore: e.remindBefore)
+        }
+    }
 
-    // MARK: Weekly schedule (reminder comes a few minutes before)
-
-    static let schedule: [ScheduleItem] = [
-        ScheduleItem(title: "School", emoji: "🏫", time: ClockTime(8), days: Weekdays.school, remindMinutesBefore: 15),
-        ScheduleItem(title: "Quran class", emoji: "📖", time: ClockTime(10), days: Weekdays.weekend, remindMinutesBefore: 15),
-        ScheduleItem(title: "Karate", emoji: "🥋", time: ClockTime(11), days: Weekdays.weekend, remindMinutesBefore: 20),
-        ScheduleItem(title: "Dinner", emoji: "🍲", time: ClockTime(18, 30)),
-        ScheduleItem(title: "Bedtime", emoji: "🌙", time: ClockTime(21)),
-    ]
-
-    // MARK: Rewards
-
-    static let rewards: [Reward] = [
-        Reward(title: "Ice cream trip", emoji: "🍦", cost: 100),
-        Reward(title: "30 min extra game time", emoji: "🎮", cost: 150),
-        Reward(title: "Pick what's for dinner", emoji: "🍕", cost: 250),
-        Reward(title: "A new book or toy", emoji: "🎁", cost: 500),
-    ]
+    static var rewards: [Reward] {
+        s.rewards.map { Reward(title: $0.title, emoji: $0.emoji, cost: $0.cost) }
+    }
 
     // MARK: Games
-    // The parent controls whether games show at all, and when they're locked.
-    // (In the version 2 parent app these become toggles on your phone.)
 
-    /// Master switch. Set to false to hide the Games section completely.
-    static let gamesEnabled = true
+    static var gamesEnabled: Bool { s.gamesEnabled }
 
-    /// Windows when games are locked, even if enabled — e.g. school hours and
-    /// bedtime. Add or edit windows freely. Outside these, games are playable.
-    static let gameBlackouts: [TimeWindow] = [
-        TimeWindow(label: "School", start: ClockTime(8), end: ClockTime(15), days: Weekdays.school),
-        TimeWindow(label: "Bedtime", start: ClockTime(21), end: ClockTime(7), days: Weekdays.all),
-    ]
+    static var gameBlackouts: [TimeWindow] {
+        s.blackouts.map {
+            TimeWindow(label: $0.label,
+                       start: ClockTime($0.startHour, $0.startMinute),
+                       end: ClockTime($0.endHour, $0.endMinute),
+                       days: Set($0.days))
+        }
+    }
 
-    /// The games on the watch. Add a new case to GameKind and a new row here to
-    /// grow the arcade later — the Games screen picks them up automatically.
-    static let games: [GameItem] = [
-        GameItem(id: "snake", title: "Snake", emoji: "🐍", detail: "The classic game", kind: .snake),
-    ]
+    static var games: [GameItem] {
+        s.games.compactMap { g in
+            guard g.enabled, let kind = GameKind(rawValue: g.id) else { return nil }
+            return GameItem(id: g.id, title: g.title, emoji: g.emoji, kind: kind)
+        }
+    }
 }
