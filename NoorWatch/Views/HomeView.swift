@@ -37,8 +37,10 @@ struct HomeView: View {
                 NavigationLink { RewardsView() } label: {
                     MenuRow(emoji: "🎁", title: "Rewards", detail: "\(store.totalPoints) points")
                 }
-                NavigationLink { SnakeView() } label: {
-                    MenuRow(emoji: "🐍", title: "Snake", detail: "The classic game")
+                if FamilyConfig.gamesEnabled {
+                    NavigationLink { GamesView() } label: {
+                        MenuRow(emoji: "🎮", title: "Games", detail: gamesDetail)
+                    }
                 }
             }
             .navigationTitle("Noor")
@@ -53,6 +55,13 @@ struct HomeView: View {
 
     private var doneToday: Int {
         store.tasks().filter { store.isDone($0) }.count
+    }
+
+    private var gamesDetail: String {
+        if let blackout = GamesGate.activeBlackout() {
+            return "Off during \(blackout.label.lowercased())"
+        }
+        return FamilyConfig.games.count == 1 ? "1 game" : "\(FamilyConfig.games.count) games"
     }
 }
 

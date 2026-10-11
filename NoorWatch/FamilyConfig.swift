@@ -77,4 +77,24 @@ enum FamilyConfig {
         Reward(title: "Pick what's for dinner", emoji: "🍕", cost: 250),
         Reward(title: "A new book or toy", emoji: "🎁", cost: 500),
     ]
+
+    // MARK: Games
+    // The parent controls whether games show at all, and when they're locked.
+    // (In the version 2 parent app these become toggles on your phone.)
+
+    /// Master switch. Set to false to hide the Games section completely.
+    static let gamesEnabled = true
+
+    /// Windows when games are locked, even if enabled — e.g. school hours and
+    /// bedtime. Add or edit windows freely. Outside these, games are playable.
+    static let gameBlackouts: [TimeWindow] = [
+        TimeWindow(label: "School", start: ClockTime(8), end: ClockTime(15), days: Weekdays.school),
+        TimeWindow(label: "Bedtime", start: ClockTime(21), end: ClockTime(7), days: Weekdays.all),
+    ]
+
+    /// The games on the watch. Add a new case to GameKind and a new row here to
+    /// grow the arcade later — the Games screen picks them up automatically.
+    static let games: [GameItem] = [
+        GameItem(id: "snake", title: "Snake", emoji: "🐍", detail: "The classic game", kind: .snake),
+    ]
 }

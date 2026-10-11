@@ -11,6 +11,11 @@ parent, so you can change things without editing code or re-installing.
 - **Prayer settings** — calculation method, Asr madhab, adhan on/off.
 - **Rewards** — add rewards and set point costs; approve a reward when he
   asks to redeem it.
+- **Games** — a master on/off switch, plus the blackout windows when games
+  lock (school hours, bedtime). In version 1 these live in `FamilyConfig`
+  (`gamesEnabled`, `gameBlackouts`, `games`); version 2 turns them into
+  toggles on your phone, and new games added to the app appear here to
+  allow or hide per game.
 - **See his week** — the same weekly review, on your phone.
 - **Send him a voice message** — he plays it on his watch.
 - **Check-in** — tap to make his watch buzz and ask him to send a quick

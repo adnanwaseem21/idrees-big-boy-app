@@ -47,6 +47,32 @@ enum Weekdays {
     static let weekend: Set<Int> = [1, 7]
 }
 
+/// A recurring stretch of the day, e.g. school hours, used to lock games.
+/// Handles overnight windows (start later than end, like 9pm–7am).
+struct TimeWindow: Identifiable {
+    let label: String
+    let start: ClockTime
+    let end: ClockTime
+    var days: Set<Int> = Weekdays.all
+
+    var id: String { "\(label)-\(start.hour)-\(end.hour)" }
+
+    func contains(_ date: Date) -> Bool {
+        let cal = Calendar.current
+        let minutes = cal.component(.hour, from: date) * 60 + cal.component(.minute, from: date)
+        let from = start.hour * 60 + start.minute
+        let to = end.hour * 60 + end.minute
+        let weekday = cal.component(.weekday, from: date)
+        if from <= to {
+            return days.contains(weekday) && minutes >= from && minutes < to
+        }
+        // Overnight window: active late today OR early the "next" day.
+        let yesterday = weekday == 1 ? 7 : weekday - 1
+        return (days.contains(weekday) && minutes >= from)
+            || (days.contains(yesterday) && minutes < to)
+    }
+}
+
 enum TaskKind: String, Codable {
     case chore, activity
 }
