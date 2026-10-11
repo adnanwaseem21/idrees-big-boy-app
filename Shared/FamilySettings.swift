@@ -9,9 +9,19 @@ import Foundation
 /// this Shared/ folder.
 struct FamilySettings: Codable, Equatable {
     var childName: String
+
+    var parents: [ParentSetting]
+    var quickMessages: [QuickMessage]
+
     var prayerMethod: String          // e.g. "northAmerica", "ummAlQura"
     var madhab: String                // "shafi" or "hanafi"
     var adhanOn: Bool
+    var pointsPerPrayer: Int
+
+    // Fallback home location, used for prayer times until the watch gets a
+    // GPS fix. Defaults to Paterson, NJ.
+    var homeLatitude: Double
+    var homeLongitude: Double
 
     var gamesEnabled: Bool
     var blackouts: [Blackout]
@@ -26,9 +36,23 @@ struct FamilySettings: Codable, Equatable {
     static var defaults: FamilySettings {
         FamilySettings(
             childName: "Idrees",
+            parents: [
+                ParentSetting(id: "mom", name: "Mom", emoji: "👩", phone: "+1 555 555 0100"),
+                ParentSetting(id: "dad", name: "Dad", emoji: "👨", phone: "+1 555 555 0101"),
+            ],
+            quickMessages: [
+                QuickMessage(text: "Please pick me up"),
+                QuickMessage(text: "I'm OK 👍"),
+                QuickMessage(text: "I'm running late"),
+                QuickMessage(text: "I got to school"),
+                QuickMessage(text: "I love you ❤️"),
+            ],
             prayerMethod: "northAmerica",
             madhab: "shafi",
             adhanOn: false,
+            pointsPerPrayer: 10,
+            homeLatitude: 40.9168,
+            homeLongitude: -74.1718,
             gamesEnabled: true,
             blackouts: [
                 Blackout(label: "School", startHour: 8, startMinute: 0, endHour: 15, endMinute: 0, days: Weekday.school),
@@ -67,6 +91,18 @@ enum Weekday {
     static let school = [2, 3, 4, 5, 6]
     static let weekend = [1, 7]
     static let names = ["S", "M", "T", "W", "T", "F", "S"]   // index 0 = Sunday(1)
+}
+
+struct ParentSetting: Codable, Equatable, Identifiable {
+    var id: String
+    var name: String
+    var emoji: String
+    var phone: String
+}
+
+struct QuickMessage: Codable, Equatable, Identifiable {
+    var id = UUID().uuidString
+    var text: String
 }
 
 struct TaskSetting: Codable, Equatable, Identifiable {

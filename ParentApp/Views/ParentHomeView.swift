@@ -13,6 +13,9 @@ struct ParentHomeView: View {
                         TextField("Name", text: $store.settings.childName)
                             .multilineTextAlignment(.trailing)
                     }
+                    NavigationLink { ContactsEditorView() } label: {
+                        row("📞", "Contacts & messages", count: store.settings.parents.count)
+                    }
                 }
 
                 Section("Daily life") {
@@ -39,6 +42,9 @@ struct ParentHomeView: View {
                 Section("Faith") {
                     NavigationLink { PrayerSettingsView() } label: {
                         row("🕌", "Prayer", detail: methodName(store.settings.prayerMethod))
+                    }
+                    NavigationLink { LocationSettingsView() } label: {
+                        row("📍", "Home location")
                     }
                 }
 

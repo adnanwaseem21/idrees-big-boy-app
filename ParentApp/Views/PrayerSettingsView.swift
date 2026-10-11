@@ -43,6 +43,11 @@ struct PrayerSettingsView: View {
             } footer: {
                 Text("Off plays a gentle chime and vibration, which is better for school.")
             }
+
+            Section("Points") {
+                Stepper("\(store.settings.pointsPerPrayer) points per prayer",
+                        value: $store.settings.pointsPerPrayer, in: 0...100, step: 5)
+            }
         }
         .navigationTitle("Prayer")
     }
