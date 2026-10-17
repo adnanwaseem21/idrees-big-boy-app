@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01555A9689BF4CE1A963C70D /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCD0EC80DAA86B1448D42D7 /* TodayView.swift */; };
+		036EF29E09716549FFA605FC /* QuranContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CC96B55D2AF390BB7BE962 /* QuranContent.swift */; };
+		0A1B7E45A0B8A5F11BD00F8C /* FamilyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE7D91EDCD9988BE6444E7 /* FamilyConfig.swift */; };
+		1EC759E2A90A0899BE910D07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22298AA86398B2E9512EA1C /* Assets.xcassets */; };
+		1F611883E21B173DF1B8E0DF /* FamilySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D7E607DDEFC61F319789C /* FamilySettings.swift */; };
+		235E2B0C90568B5D28671F46 /* LocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A78ED1B9867679BAC33F36 /* LocationSettingsView.swift */; };
+		282F5DD6EA5639F04B1CD80A /* WeekReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627388BEA006C9109070906 /* WeekReviewView.swift */; };
+		2EEF74920FFB502444DDA9CD /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD61F596C7489425360F3 /* Brand.swift */; };
+		30083E3F603671CC88628AE1 /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A91B4D2D5404B99BE68B62 /* PrayerView.swift */; };
+		301611A8ACAF44BDBAE4023B /* VoiceNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7970504C8C02029E94764C44 /* VoiceNotesView.swift */; };
+		335092F8BE1E346673B28F23 /* LiveSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E95718AB34A9B1180CD55 /* LiveSettings.swift */; };
+		3EB434184CEA00AF88FB6076 /* LiveSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E95718AB34A9B1180CD55 /* LiveSettings.swift */; };
+		47D0862803A533348C095189 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77BA2328257597F25481CD /* HomeView.swift */; };
+		4FD6A6F013F9085A10A4D5E7 /* RewardsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F621CCCF54F523C2E8092 /* RewardsEditorView.swift */; };
+		5B2EC238840DCC1993634BF0 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B9A3018A732833D68B985 /* QuizView.swift */; };
+		5B696786DFBAB0A9B31CB313 /* ParentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B055622E24E15FE9474D4F5 /* ParentApp.swift */; };
+		5C0F7A5F3E18CC0792D6BBAC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD61F596C7489425360F3 /* Brand.swift */; };
+		6990A55C373AFFDE77FF3EFF /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696C160E88CFE9C2CD8455C /* Reminders.swift */; };
+		7264F13841CCCDAAC0B140DC /* MemoryMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD646071CC7307D8137122E /* MemoryMatchView.swift */; };
+		83680B0634E24DC3D618F4F3 /* VoiceNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33212A75EBD41D826A50288 /* VoiceNotes.swift */; };
+		84D1832B54D1CD32DE6508EB /* GamesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32957A896A505B095C55D7EB /* GamesEditorView.swift */; };
+		8B460E8BDAF0413E8A47C768 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F17F00382024CB46519C0 /* Models.swift */; };
+		8B4CCC300E7E2549C4FBD145 /* Adhan in Frameworks */ = {isa = PBXBuildFile; productRef = ABC1A01089BF00B00304375B /* Adhan */; };
+		8DF4501A3442854761071DED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88A5E24E22F1AB4FC388632A /* Assets.xcassets */; };
+		90B9598D609EFF713031DA94 /* FamilySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D7E607DDEFC61F319789C /* FamilySettings.swift */; };
+		9401BAC98A6F60D0C1CF83D4 /* NoorWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB38DF76F7A16E7F21905A /* NoorWatchApp.swift */; };
+		97ADEF9C83A16692F4E413EC /* WatchSetupGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D112BA339673E02FA6F9A /* WatchSetupGuide.swift */; };
+		9AE5A5E674B4D8EB9998AE29 /* KidProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDF4D1AB384EF1C5377DD8E /* KidProgress.swift */; };
+		9DFEA8E297503DD053D17CB2 /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71866E0E52A94B9ABC2BA737 /* FeaturesView.swift */; };
+		A024AEA29B28E60FF76F260C /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FDCD191BAD002CF91CC78 /* SettingsStore.swift */; };
+		A150DD0BFCDDC03C7B67B279 /* DuaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D621BF38E797873D81AB6C31 /* DuaView.swift */; };
+		B1FF139623F2F7E253299006 /* ContactsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B0C7498353969F17531C3 /* ContactsEditorView.swift */; };
+		B30FB0BBF1E8C3B1A53E1CF7 /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6713DC04197E5D389F57F7 /* RewardsView.swift */; };
+		BC4D437034598DE3E0CBE2BC /* ScheduleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C058CA43177B5128A0F0CFB2 /* ScheduleEditorView.swift */; };
+		BCF35F620FDE9A8C138E1F59 /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEFFA2F56B707930F8AA59 /* GamesView.swift */; };
+		C7664FD6F365A9F9B72E409C /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FDCD191BAD002CF91CC78 /* SettingsStore.swift */; };
+		CB8B1A55911E4ED42C742174 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B57080B967C44654860B32C /* ReviewView.swift */; };
+		D018D2A61A824235D054B46D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0984C98A6B7DE1CAA383D9 /* OnboardingView.swift */; };
+		D303C65D0C10587A79016DB2 /* IdreesWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AD4771DA5C3778EC2DFD5D45 /* IdreesWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D6FBEE3CA5821D6633C89408 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07D42D85D54E7DB2D50516 /* Components.swift */; };
+		D85A846B4DF4F1D4BABB4F3A /* SnakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774CDA110707468D256574F3 /* SnakeView.swift */; };
+		DB142CC024210DE5803955EC /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB49C696E351042494FE61B /* Games.swift */; };
+		DC1B828B71A80970A422E096 /* Adhan in Frameworks */ = {isa = PBXBuildFile; productRef = 4926938F9E0FED571BF06899 /* Adhan */; };
+		DF6AEFEA080F4D901C10EA58 /* KidStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3496431F241E6FA03B1D961 /* KidStore.swift */; };
+		EC84ABA9B627D8F870EE9F6D /* IslamicContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5A1C8E4DD76EF3A1879AB /* IslamicContent.swift */; };
+		ED617CA6CC39B470830D3341 /* KidProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDF4D1AB384EF1C5377DD8E /* KidProgress.swift */; };
+		F057C07E51C85464ACD8EABA /* PrayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68BD7AE5FFDBD6BDB8367C5 /* PrayerService.swift */; };
+		F16543B66F709BC855801887 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E6E3A9A63E224E0E621D8 /* ScheduleView.swift */; };
+		F2F87AB2F50C20114DFAF82D /* ParentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67D8C879DB02028F672AD3 /* ParentHomeView.swift */; };
+		F465DA5B7A41307E618E59D5 /* QuranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1197265173165071E0D81 /* QuranView.swift */; };
+		F4C192E73E0900F555A462A9 /* CallParentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6D5D23BD8FC50B91BD15F /* CallParentsView.swift */; };
+		F74857295A2256C332EBBDAA /* TasksEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4493660C5445DBDA0462542 /* TasksEditorView.swift */; };
+		FE5B79DD338FD1E6F12168DE /* PrayerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CFBC3DA083751841BC2CA4 /* PrayerSettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1D3216E711A11CEAB01EC0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 998DBB032E0CD3B8EEAF1B2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25D57E8D47A59914FA31BD5E;
+			remoteInfo = IdreesWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E022520B4E858A34321F1442 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D303C65D0C10587A79016DB2 /* IdreesWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		051B0C7498353969F17531C3 /* ContactsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsEditorView.swift; sourceTree = "<group>"; };
+		0E0984C98A6B7DE1CAA383D9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0E8D7E607DDEFC61F319789C /* FamilySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilySettings.swift; sourceTree = "<group>"; };
+		1B055622E24E15FE9474D4F5 /* ParentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentApp.swift; sourceTree = "<group>"; };
+		1C67D8C879DB02028F672AD3 /* ParentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentHomeView.swift; sourceTree = "<group>"; };
+		245F621CCCF54F523C2E8092 /* RewardsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsEditorView.swift; sourceTree = "<group>"; };
+		2B0D7F28CBBBF60495C1E93C /* NoorWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoorWatch.entitlements; sourceTree = "<group>"; };
+		2BD646071CC7307D8137122E /* MemoryMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMatchView.swift; sourceTree = "<group>"; };
+		32957A896A505B095C55D7EB /* GamesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesEditorView.swift; sourceTree = "<group>"; };
+		391E6E3A9A63E224E0E621D8 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		3B4E95718AB34A9B1180CD55 /* LiveSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSettings.swift; sourceTree = "<group>"; };
+		3C1BD61F596C7489425360F3 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		4CDF4D1AB384EF1C5377DD8E /* KidProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidProgress.swift; sourceTree = "<group>"; };
+		59CB38DF76F7A16E7F21905A /* NoorWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoorWatchApp.swift; sourceTree = "<group>"; };
+		5ADE7D91EDCD9988BE6444E7 /* FamilyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyConfig.swift; sourceTree = "<group>"; };
+		5C1AC355023B4FA00D7E6AE6 /* IdreesBigBoyApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = IdreesBigBoyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		666FDCD191BAD002CF91CC78 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		67A91B4D2D5404B99BE68B62 /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
+		71866E0E52A94B9ABC2BA737 /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
+		7696C160E88CFE9C2CD8455C /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
+		774CDA110707468D256574F3 /* SnakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeView.swift; sourceTree = "<group>"; };
+		7970504C8C02029E94764C44 /* VoiceNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceNotesView.swift; sourceTree = "<group>"; };
+		88A5E24E22F1AB4FC388632A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A07D42D85D54E7DB2D50516 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		8DCD0EC80DAA86B1448D42D7 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		9B57080B967C44654860B32C /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		A33AF7A881A7EA57247C0132 /* ParentApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ParentApp.entitlements; sourceTree = "<group>"; };
+		A3496431F241E6FA03B1D961 /* KidStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStore.swift; sourceTree = "<group>"; };
+		AD4771DA5C3778EC2DFD5D45 /* IdreesWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdreesWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD77BA2328257597F25481CD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B22298AA86398B2E9512EA1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B33212A75EBD41D826A50288 /* VoiceNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceNotes.swift; sourceTree = "<group>"; };
+		B4493660C5445DBDA0462542 /* TasksEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksEditorView.swift; sourceTree = "<group>"; };
+		B9A78ED1B9867679BAC33F36 /* LocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsView.swift; sourceTree = "<group>"; };
+		BF7F17F00382024CB46519C0 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BFB49C696E351042494FE61B /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		C058CA43177B5128A0F0CFB2 /* ScheduleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditorView.swift; sourceTree = "<group>"; };
+		C68BD7AE5FFDBD6BDB8367C5 /* PrayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerService.swift; sourceTree = "<group>"; };
+		CCB5A1C8E4DD76EF3A1879AB /* IslamicContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslamicContent.swift; sourceTree = "<group>"; };
+		D57D112BA339673E02FA6F9A /* WatchSetupGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSetupGuide.swift; sourceTree = "<group>"; };
+		D621BF38E797873D81AB6C31 /* DuaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuaView.swift; sourceTree = "<group>"; };
+		DAFEFFA2F56B707930F8AA59 /* GamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
+		E1CC96B55D2AF390BB7BE962 /* QuranContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranContent.swift; sourceTree = "<group>"; };
+		EA6713DC04197E5D389F57F7 /* RewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
+		EDA6D5D23BD8FC50B91BD15F /* CallParentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallParentsView.swift; sourceTree = "<group>"; };
+		F3CFBC3DA083751841BC2CA4 /* PrayerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSettingsView.swift; sourceTree = "<group>"; };
+		F627388BEA006C9109070906 /* WeekReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReviewView.swift; sourceTree = "<group>"; };
+		FE3B9A3018A732833D68B985 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		FFF1197265173165071E0D81 /* QuranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BC45FBE7D790813318BF053 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B4CCC300E7E2549C4FBD145 /* Adhan in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A44189086B63C8025BC91566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC1B828B71A80970A422E096 /* Adhan in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A4B2EF0A5C59A145AE1DCFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C1AC355023B4FA00D7E6AE6 /* IdreesBigBoyApp.app */,
+				AD4771DA5C3778EC2DFD5D45 /* IdreesWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B2D697CB9B941AE7AB01D67 = {
+			isa = PBXGroup;
+			children = (
+				B681085F5D25B891285C1C82 /* NoorWatch */,
+				9C4A7383D3D6606E1A49EF44 /* ParentApp */,
+				B92E70379157BB441255F8F5 /* Shared */,
+				2A4B2EF0A5C59A145AE1DCFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F8BDDCA1589D2FF7BF23627 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A07D42D85D54E7DB2D50516 /* Components.swift */,
+				051B0C7498353969F17531C3 /* ContactsEditorView.swift */,
+				71866E0E52A94B9ABC2BA737 /* FeaturesView.swift */,
+				32957A896A505B095C55D7EB /* GamesEditorView.swift */,
+				B9A78ED1B9867679BAC33F36 /* LocationSettingsView.swift */,
+				0E0984C98A6B7DE1CAA383D9 /* OnboardingView.swift */,
+				1C67D8C879DB02028F672AD3 /* ParentHomeView.swift */,
+				F3CFBC3DA083751841BC2CA4 /* PrayerSettingsView.swift */,
+				9B57080B967C44654860B32C /* ReviewView.swift */,
+				245F621CCCF54F523C2E8092 /* RewardsEditorView.swift */,
+				C058CA43177B5128A0F0CFB2 /* ScheduleEditorView.swift */,
+				B4493660C5445DBDA0462542 /* TasksEditorView.swift */,
+				D57D112BA339673E02FA6F9A /* WatchSetupGuide.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67232B1A15F35C250CD78ED5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6D5D23BD8FC50B91BD15F /* CallParentsView.swift */,
+				D621BF38E797873D81AB6C31 /* DuaView.swift */,
+				DAFEFFA2F56B707930F8AA59 /* GamesView.swift */,
+				AD77BA2328257597F25481CD /* HomeView.swift */,
+				2BD646071CC7307D8137122E /* MemoryMatchView.swift */,
+				67A91B4D2D5404B99BE68B62 /* PrayerView.swift */,
+				FE3B9A3018A732833D68B985 /* QuizView.swift */,
+				FFF1197265173165071E0D81 /* QuranView.swift */,
+				EA6713DC04197E5D389F57F7 /* RewardsView.swift */,
+				391E6E3A9A63E224E0E621D8 /* ScheduleView.swift */,
+				774CDA110707468D256574F3 /* SnakeView.swift */,
+				8DCD0EC80DAA86B1448D42D7 /* TodayView.swift */,
+				7970504C8C02029E94764C44 /* VoiceNotesView.swift */,
+				F627388BEA006C9109070906 /* WeekReviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9C4A7383D3D6606E1A49EF44 /* ParentApp */ = {
+			isa = PBXGroup;
+			children = (
+				88A5E24E22F1AB4FC388632A /* Assets.xcassets */,
+				A33AF7A881A7EA57247C0132 /* ParentApp.entitlements */,
+				1B055622E24E15FE9474D4F5 /* ParentApp.swift */,
+				5F8BDDCA1589D2FF7BF23627 /* Views */,
+			);
+			path = ParentApp;
+			sourceTree = "<group>";
+		};
+		B681085F5D25B891285C1C82 /* NoorWatch */ = {
+			isa = PBXGroup;
+			children = (
+				B22298AA86398B2E9512EA1C /* Assets.xcassets */,
+				5ADE7D91EDCD9988BE6444E7 /* FamilyConfig.swift */,
+				BFB49C696E351042494FE61B /* Games.swift */,
+				CCB5A1C8E4DD76EF3A1879AB /* IslamicContent.swift */,
+				A3496431F241E6FA03B1D961 /* KidStore.swift */,
+				BF7F17F00382024CB46519C0 /* Models.swift */,
+				2B0D7F28CBBBF60495C1E93C /* NoorWatch.entitlements */,
+				59CB38DF76F7A16E7F21905A /* NoorWatchApp.swift */,
+				C68BD7AE5FFDBD6BDB8367C5 /* PrayerService.swift */,
+				E1CC96B55D2AF390BB7BE962 /* QuranContent.swift */,
+				7696C160E88CFE9C2CD8455C /* Reminders.swift */,
+				B33212A75EBD41D826A50288 /* VoiceNotes.swift */,
+				67232B1A15F35C250CD78ED5 /* Views */,
+			);
+			path = NoorWatch;
+			sourceTree = "<group>";
+		};
+		B92E70379157BB441255F8F5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3C1BD61F596C7489425360F3 /* Brand.swift */,
+				0E8D7E607DDEFC61F319789C /* FamilySettings.swift */,
+				4CDF4D1AB384EF1C5377DD8E /* KidProgress.swift */,
+				3B4E95718AB34A9B1180CD55 /* LiveSettings.swift */,
+				666FDCD191BAD002CF91CC78 /* SettingsStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05EB2F526C3DF508D282DC04 /* IdreesBigBoyApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F3AB727EAAA487662AFAE18 /* Build configuration list for PBXNativeTarget "IdreesBigBoyApp" */;
+			buildPhases = (
+				3D88F0A3457E518EEC12DCFA /* Sources */,
+				C9B77BC0637B5E04D797B967 /* Resources */,
+				6BC45FBE7D790813318BF053 /* Frameworks */,
+				E022520B4E858A34321F1442 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D9D2697959200CB9BAFA541 /* PBXTargetDependency */,
+			);
+			name = IdreesBigBoyApp;
+			packageProductDependencies = (
+				ABC1A01089BF00B00304375B /* Adhan */,
+			);
+			productName = IdreesBigBoyApp;
+			productReference = 5C1AC355023B4FA00D7E6AE6 /* IdreesBigBoyApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25D57E8D47A59914FA31BD5E /* IdreesWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A1C9BBFC09E617015C21515 /* Build configuration list for PBXNativeTarget "IdreesWatch" */;
+			buildPhases = (
+				A19D3549FEBBE2AAF994814B /* Sources */,
+				60ACA1A1431F0E4F6E779393 /* Resources */,
+				A44189086B63C8025BC91566 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdreesWatch;
+			packageProductDependencies = (
+				4926938F9E0FED571BF06899 /* Adhan */,
+			);
+			productName = IdreesWatch;
+			productReference = AD4771DA5C3778EC2DFD5D45 /* IdreesWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		998DBB032E0CD3B8EEAF1B2A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 88CE4EB1903267E72406C7B6 /* Build configuration list for PBXProject "IdreesBigBoyApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4B2D697CB9B941AE7AB01D67;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B9FA6BC467844EF1D2087B73 /* XCRemoteSwiftPackageReference "adhan-swift" */,
+			);
+			preferredProjectObjectVersion = 54;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05EB2F526C3DF508D282DC04 /* IdreesBigBoyApp */,
+				25D57E8D47A59914FA31BD5E /* IdreesWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		60ACA1A1431F0E4F6E779393 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EC759E2A90A0899BE910D07 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B77BC0637B5E04D797B967 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF4501A3442854761071DED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D88F0A3457E518EEC12DCFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EEF74920FFB502444DDA9CD /* Brand.swift in Sources */,
+				D6FBEE3CA5821D6633C89408 /* Components.swift in Sources */,
+				B1FF139623F2F7E253299006 /* ContactsEditorView.swift in Sources */,
+				1F611883E21B173DF1B8E0DF /* FamilySettings.swift in Sources */,
+				9DFEA8E297503DD053D17CB2 /* FeaturesView.swift in Sources */,
+				84D1832B54D1CD32DE6508EB /* GamesEditorView.swift in Sources */,
+				9AE5A5E674B4D8EB9998AE29 /* KidProgress.swift in Sources */,
+				335092F8BE1E346673B28F23 /* LiveSettings.swift in Sources */,
+				235E2B0C90568B5D28671F46 /* LocationSettingsView.swift in Sources */,
+				D018D2A61A824235D054B46D /* OnboardingView.swift in Sources */,
+				5B696786DFBAB0A9B31CB313 /* ParentApp.swift in Sources */,
+				F2F87AB2F50C20114DFAF82D /* ParentHomeView.swift in Sources */,
+				FE5B79DD338FD1E6F12168DE /* PrayerSettingsView.swift in Sources */,
+				CB8B1A55911E4ED42C742174 /* ReviewView.swift in Sources */,
+				4FD6A6F013F9085A10A4D5E7 /* RewardsEditorView.swift in Sources */,
+				BC4D437034598DE3E0CBE2BC /* ScheduleEditorView.swift in Sources */,
+				A024AEA29B28E60FF76F260C /* SettingsStore.swift in Sources */,
+				F74857295A2256C332EBBDAA /* TasksEditorView.swift in Sources */,
+				97ADEF9C83A16692F4E413EC /* WatchSetupGuide.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A19D3549FEBBE2AAF994814B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C0F7A5F3E18CC0792D6BBAC /* Brand.swift in Sources */,
+				F4C192E73E0900F555A462A9 /* CallParentsView.swift in Sources */,
+				A150DD0BFCDDC03C7B67B279 /* DuaView.swift in Sources */,
+				0A1B7E45A0B8A5F11BD00F8C /* FamilyConfig.swift in Sources */,
+				90B9598D609EFF713031DA94 /* FamilySettings.swift in Sources */,
+				DB142CC024210DE5803955EC /* Games.swift in Sources */,
+				BCF35F620FDE9A8C138E1F59 /* GamesView.swift in Sources */,
+				47D0862803A533348C095189 /* HomeView.swift in Sources */,
+				EC84ABA9B627D8F870EE9F6D /* IslamicContent.swift in Sources */,
+				ED617CA6CC39B470830D3341 /* KidProgress.swift in Sources */,
+				DF6AEFEA080F4D901C10EA58 /* KidStore.swift in Sources */,
+				3EB434184CEA00AF88FB6076 /* LiveSettings.swift in Sources */,
+				7264F13841CCCDAAC0B140DC /* MemoryMatchView.swift in Sources */,
+				8B460E8BDAF0413E8A47C768 /* Models.swift in Sources */,
+				9401BAC98A6F60D0C1CF83D4 /* NoorWatchApp.swift in Sources */,
+				F057C07E51C85464ACD8EABA /* PrayerService.swift in Sources */,
+				30083E3F603671CC88628AE1 /* PrayerView.swift in Sources */,
+				5B2EC238840DCC1993634BF0 /* QuizView.swift in Sources */,
+				036EF29E09716549FFA605FC /* QuranContent.swift in Sources */,
+				F465DA5B7A41307E618E59D5 /* QuranView.swift in Sources */,
+				6990A55C373AFFDE77FF3EFF /* Reminders.swift in Sources */,
+				B30FB0BBF1E8C3B1A53E1CF7 /* RewardsView.swift in Sources */,
+				F16543B66F709BC855801887 /* ScheduleView.swift in Sources */,
+				C7664FD6F365A9F9B72E409C /* SettingsStore.swift in Sources */,
+				D85A846B4DF4F1D4BABB4F3A /* SnakeView.swift in Sources */,
+				01555A9689BF4CE1A963C70D /* TodayView.swift in Sources */,
+				83680B0634E24DC3D618F4F3 /* VoiceNotes.swift in Sources */,
+				301611A8ACAF44BDBAE4023B /* VoiceNotesView.swift in Sources */,
+				282F5DD6EA5639F04B1CD80A /* WeekReviewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D9D2697959200CB9BAFA541 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25D57E8D47A59914FA31BD5E /* IdreesWatch */;
+			targetProxy = D1D3216E711A11CEAB01EC0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DB63F83F0D5380E323FE8EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		5D50866407BC380D698A6AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		723434B5950A8E7306DB7A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used to record voice notes.";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.waseem.idreesbigboy;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		7364D1EFEC684BD09BEF985C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
+				ITSAppUsesNonExemptEncryption = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		78959F0BFCB618B2AA8AA607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
+				ITSAppUsesNonExemptEncryption = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0F619726DF46E9AEB19F414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used to record voice notes.";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.waseem.idreesbigboy;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F3AB727EAAA487662AFAE18 /* Build configuration list for PBXNativeTarget "IdreesBigBoyApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78959F0BFCB618B2AA8AA607 /* Debug */,
+				7364D1EFEC684BD09BEF985C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		88CE4EB1903267E72406C7B6 /* Build configuration list for PBXProject "IdreesBigBoyApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D50866407BC380D698A6AC1 /* Debug */,
+				1DB63F83F0D5380E323FE8EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9A1C9BBFC09E617015C21515 /* Build configuration list for PBXNativeTarget "IdreesWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F619726DF46E9AEB19F414 /* Debug */,
+				723434B5950A8E7306DB7A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9FA6BC467844EF1D2087B73 /* XCRemoteSwiftPackageReference "adhan-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/batoulapps/adhan-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4926938F9E0FED571BF06899 /* Adhan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9FA6BC467844EF1D2087B73 /* XCRemoteSwiftPackageReference "adhan-swift" */;
+			productName = Adhan;
+		};
+		ABC1A01089BF00B00304375B /* Adhan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9FA6BC467844EF1D2087B73 /* XCRemoteSwiftPackageReference "adhan-swift" */;
+			productName = Adhan;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 998DBB032E0CD3B8EEAF1B2A /* Project object */;
+}
