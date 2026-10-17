@@ -1,12 +1,13 @@
 #!/bin/sh
 # Runs on Apple's Xcode Cloud build machine after it clones the repo.
-# It installs XcodeGen, generates the Xcode project, and resolves the Swift
-# package dependencies (Adhan) so the archive step has a Package.resolved —
-# this keeps updates fully automatic without committing the generated project.
+# Installs XcodeGen, generates the Xcode project, and drops the committed
+# Package.resolved into place so the archive (which has automatic Swift package
+# resolution disabled) builds without re-resolving.
 set -e
 brew install xcodegen
 cd "$CI_PRIMARY_REPOSITORY_PATH"
 xcodegen generate
-# Pre-resolve Swift packages so Xcode Cloud's archive (which has automatic
-# resolution disabled) finds a resolved file.
-xcodebuild -resolvePackageDependencies -project IdreesBigBoyApp.xcodeproj
+if [ -f Package.resolved ]; then
+  mkdir -p IdreesBigBoyApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm
+  cp Package.resolved IdreesBigBoyApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+fi
