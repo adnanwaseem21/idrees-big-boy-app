@@ -57,8 +57,9 @@ enum Reminders {
     }
 
     private static var prayerSound: UNNotificationSound {
-        guard let file = FamilyConfig.prayerSoundFile else { return .default }
-        return UNNotificationSound(named: UNNotificationSoundName(rawValue: file))
+        // watchOS doesn't support custom notification sounds, so we always use
+        // the default chime/vibration. (A full adhan would play via the phone.)
+        .default
     }
 
     /// One reminder that repeats daily, or one per weekday when not every day.

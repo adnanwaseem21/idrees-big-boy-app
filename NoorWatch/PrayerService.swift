@@ -78,10 +78,12 @@ final class PrayerService: NSObject, ObservableObject, CLLocationManagerDelegate
     }
 
     private func save(latitude: Double, longitude: Double) {
-        let moved = abs(latitude - coordinates.latitude) > 0.05 || abs(longitude - coordinates.longitude) > 0.05
+        let store = UserDefaults.standard
+        let moved = abs(latitude - store.double(forKey: "lastLatitude")) > 0.05
+            || abs(longitude - store.double(forKey: "lastLongitude")) > 0.05
         coordinates = Coordinates(latitude: latitude, longitude: longitude)
-        UserDefaults.standard.set(latitude, forKey: "lastLatitude")
-        UserDefaults.standard.set(longitude, forKey: "lastLongitude")
+        store.set(latitude, forKey: "lastLatitude")
+        store.set(longitude, forKey: "lastLongitude")
         if moved {
             Reminders.rescheduleAll(prayers: self)
         }
