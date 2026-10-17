@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -102,7 +102,7 @@
 		4CDF4D1AB384EF1C5377DD8E /* KidProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidProgress.swift; sourceTree = "<group>"; };
 		59CB38DF76F7A16E7F21905A /* NoorWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoorWatchApp.swift; sourceTree = "<group>"; };
 		5ADE7D91EDCD9988BE6444E7 /* FamilyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyConfig.swift; sourceTree = "<group>"; };
-		5C1AC355023B4FA00D7E6AE6 /* IdreesBigBoyApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = IdreesBigBoyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1AC355023B4FA00D7E6AE6 /* IdreesBigBoyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdreesBigBoyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		666FDCD191BAD002CF91CC78 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		67A91B4D2D5404B99BE68B62 /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
 		71866E0E52A94B9ABC2BA737 /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
@@ -314,8 +314,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 88CE4EB1903267E72406C7B6 /* Build configuration list for PBXProject "IdreesBigBoyApp" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -330,7 +328,6 @@
 			packageReferences = (
 				B9FA6BC467844EF1D2087B73 /* XCRemoteSwiftPackageReference "adhan-swift" */,
 			);
-			preferredProjectObjectVersion = 54;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -558,6 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W82TCA9A6L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
@@ -578,6 +576,7 @@
 				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W82TCA9A6L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				ITSAppUsesNonExemptEncryption = NO;
@@ -599,6 +598,7 @@
 				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W82TCA9A6L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				ITSAppUsesNonExemptEncryption = NO;
@@ -619,6 +619,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W82TCA9A6L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
