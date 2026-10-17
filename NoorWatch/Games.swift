@@ -7,8 +7,8 @@ import Foundation
 ///   4. Add a GameItem row in FamilyConfig.games.
 enum GameKind: String, Codable {
     case snake
-    // case memory
-    // case tapRace
+    case memory
+    case quiz
 }
 
 struct GameItem: Identifiable {

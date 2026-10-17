@@ -70,6 +70,8 @@ struct FamilySettings: Codable, Equatable {
             ],
             games: [
                 GameToggle(id: "snake", title: "Snake", emoji: "🐍", enabled: true),
+                GameToggle(id: "memory", title: "Memory Match", emoji: "🃏", enabled: true),
+                GameToggle(id: "quiz", title: "Islamic Quiz", emoji: "🧠", enabled: true),
             ],
             tasks: [
                 TaskSetting(id: "bed", title: "Make your bed", emoji: "🛏️", kind: "chore", points: 5, reminderHour: 7, reminderMinute: 10, days: Weekday.all),

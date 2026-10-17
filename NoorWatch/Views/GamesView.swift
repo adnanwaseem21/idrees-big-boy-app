@@ -46,6 +46,10 @@ struct GamesView: View {
         switch kind {
         case .snake:
             SnakeView()
+        case .memory:
+            MemoryMatchView()
+        case .quiz:
+            QuizView()
         }
     }
 }

@@ -31,6 +31,9 @@ struct HomeView: View {
                     MenuRow(emoji: "🎙️", title: "Voice Notes")
                 }
                 if FamilyConfig.faithFeaturesOn {
+                    NavigationLink { QuranView() } label: {
+                        MenuRow(emoji: "📖", title: "Quran", detail: "Short surahs to memorize")
+                    }
                     NavigationLink { DuaView() } label: {
                         MenuRow(emoji: "🤲", title: "Dua & Dhikr", detail: IslamicContent.duaOfTheDay().occasion)
                     }
