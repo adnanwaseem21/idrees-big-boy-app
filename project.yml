@@ -44,6 +44,8 @@ targets:
         ITSAppUsesNonExemptEncryption: NO
         CODE_SIGN_ENTITLEMENTS: ParentApp/ParentApp.entitlements
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1"
         # DEVELOPMENT_TEAM: YOURTEAMID   # set this in Xcode or here
 
   # ---- Apple Watch app ----
