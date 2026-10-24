@@ -1,0 +1,32 @@
+# Builds on GitHub's Mac and uploads to App Store Connect as a normal App Store build (not "TestFlight
+# Internal Only", which App Review can never use). Run it: gh workflow run app-store.yml
+# Signing is Apple's cloud signing with an App Store Connect API key (Admin role), kept in GitHub secrets:
+#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY (the .p8 file's contents). Nothing secret is in this file.
+name: App Store build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Signing key
+        env: { ASC_KEY: "${{ secrets.ASC_KEY }}" }
+        run: printf '%s\n' "$ASC_KEY" > "$RUNNER_TEMP/asc.p8"
+      - name: Build number = run number + 31 (TestFlight already has 1-31)
+        run: echo "BUILD_NO=$((GITHUB_RUN_NUMBER + 31))" >> "$GITHUB_ENV"
+      - name: Archive
+        run: |
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)"
+          xcodebuild -version
+          xcodebuild -project IdreesBigBoyApp.xcodeproj -scheme IdreesBigBoyApp -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath build/IdreesBigBoyApp.xcarchive archive \
+            CURRENT_PROJECT_VERSION=$BUILD_NO -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc.p8" -authenticationKeyID "${{ secrets.ASC_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.ASC_ISSUER_ID }}"
+      - name: Sign and upload to App Store Connect
+        run: |
+          xcodebuild -exportArchive -archivePath build/IdreesBigBoyApp.xcarchive -exportOptionsPlist ExportOptions.plist \
+            -exportPath build/export -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc.p8" -authenticationKeyID "${{ secrets.ASC_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.ASC_ISSUER_ID }}"
