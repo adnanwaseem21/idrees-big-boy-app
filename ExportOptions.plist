@@ -4,7 +4,7 @@
 <dict>
 	<key>method</key><string>app-store-connect</string>
 	<key>destination</key><string>upload</string>
-	<key>teamID</key><string>W82TCA9A6L</string>
+	<key>teamID</key><string>XA76P88S4Q</string>
 	<key>signingStyle</key><string>automatic</string>
 	<key>manageAppVersionAndBuildNumber</key><false/>
 </dict>

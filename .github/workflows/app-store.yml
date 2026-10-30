@@ -13,7 +13,7 @@ jobs:
       - name: Signing key
         env: { ASC_KEY: "${{ secrets.ASC_KEY }}" }
         run: printf '%s\n' "$ASC_KEY" > "$RUNNER_TEMP/asc.p8"
-      - name: Build number = run number + 31 (TestFlight already has 1-31)
+      - name: Build number = run number + 31 (any number works; the Emergent Wireless app record starts fresh)
         run: echo "BUILD_NO=$((GITHUB_RUN_NUMBER + 31))" >> "$GITHUB_ENV"
       - name: Archive
         run: |

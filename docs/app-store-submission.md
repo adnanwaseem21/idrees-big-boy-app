@@ -32,7 +32,7 @@ embedded setup is simpler to manage and review.)
 
 ## 2. Identifiers & signing
 - Give each target a real **Bundle Identifier** (e.g.
-  `com.waseem.idreesbigboy` and `.watchkitapp`).
+  `com.ewsnetworks.idreesbigboy` and `.watchkitapp`).
 - In **Signing & Capabilities**, pick your Team and let Xcode manage signing.
 - Set the **Display Name** (Idrees Big Boy App) and bump **Version** to 1.0
   and **Build** to 1.

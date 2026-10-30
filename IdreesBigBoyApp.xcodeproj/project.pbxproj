@@ -555,15 +555,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = W82TCA9A6L;
+				DEVELOPMENT_TEAM = XA76P88S4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used to record voice notes.";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.waseem.idreesbigboy;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ewsnetworks.idreesbigboy;
 					INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewsnetworks.idreesbigboy.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -577,7 +577,7 @@
 				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = W82TCA9A6L;
+				DEVELOPMENT_TEAM = XA76P88S4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				ITSAppUsesNonExemptEncryption = NO;
@@ -586,7 +586,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewsnetworks.idreesbigboy;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1";
@@ -600,7 +600,7 @@
 				CODE_SIGN_ENTITLEMENTS = ParentApp/ParentApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = W82TCA9A6L;
+				DEVELOPMENT_TEAM = XA76P88S4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				ITSAppUsesNonExemptEncryption = NO;
@@ -609,7 +609,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewsnetworks.idreesbigboy;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1";
@@ -622,15 +622,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoorWatch/NoorWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = W82TCA9A6L;
+				DEVELOPMENT_TEAM = XA76P88S4Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idrees Big Boy App";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to calculate prayer times and the Qibla, and to show %@ in Find My.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used to record voice notes.";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.waseem.idreesbigboy;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ewsnetworks.idreesbigboy;
 					INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waseem.idreesbigboy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewsnetworks.idreesbigboy.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
