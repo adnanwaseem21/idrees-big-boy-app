@@ -1,0 +1,62 @@
+# App Store screenshots on GitHub's Mac: builds both apps for the simulator (no signing), opens each
+# screen with `-screenshot <name>` (see ScreenshotMode in Shared/Brand.swift) and saves the PNGs to the
+# `screenshots` branch. Runs when the emergent-wireless branch is pushed, or by hand.
+name: App Store screenshots
+on:
+  workflow_dispatch:
+  push:
+    branches: [emergent-wireless]
+    paths-ignore: ['docs/**', '*.md']
+permissions:
+  contents: write
+jobs:
+  shots:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick Xcode
+        run: |
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)"
+          xcodebuild -version
+      - name: Build for the simulators
+        run: |
+          xcodebuild -project IdreesBigBoyApp.xcodeproj -scheme IdreesBigBoyApp -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath dd CODE_SIGNING_ALLOWED=NO build | tail -5
+          xcodebuild -project IdreesBigBoyApp.xcodeproj -scheme IdreesWatch -configuration Debug \
+            -destination 'generic/platform=watchOS Simulator' -derivedDataPath dd CODE_SIGNING_ALLOWED=NO build | tail -5
+          find dd/Build/Products -maxdepth 2 -name '*.app'
+      - name: Take screenshots
+        run: |
+          set -x
+          mkdir -p shots
+          pick() { xcrun simctl list devicetypes | grep -E "$1" | tail -1 | sed -E 's/.*\((com\.apple[^)]*)\).*/\1/'; }
+          rt() { xcrun simctl list runtimes | grep -E "^$1" | tail -1 | sed -E 's/.* - (com\.apple[^ ]*).*/\1/'; }
+          PHONE=$(xcrun simctl create shotphone "$(pick 'iPhone [0-9]+ Pro Max')" "$(rt iOS)")
+          WATCH=$(xcrun simctl create shotwatch "$(pick 'Apple Watch Ultra')" "$(rt watchOS)")
+          for D in $PHONE $WATCH; do xcrun simctl boot $D; done
+          xcrun simctl bootstatus $PHONE -b; xcrun simctl bootstatus $WATCH -b
+          xcrun simctl status_bar $PHONE override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
+          for D in $PHONE $WATCH; do xcrun simctl location $D set 40.8957,-74.1269 || true; done
+          IOSAPP=$(ls -d dd/Build/Products/Debug-iphonesimulator/IdreesBigBoyApp.app)
+          WAPP=$(ls -d dd/Build/Products/Debug-watchsimulator/IdreesWatch.app)
+          xcrun simctl install $PHONE "$IOSAPP"
+          xcrun simctl install $WATCH "$WAPP"
+          xcrun simctl privacy $WATCH grant location com.ewsnetworks.idreesbigboy.watchkitapp || true
+          for S in home chores schedule rewards review; do
+            xcrun simctl launch --terminate-running-process $PHONE com.ewsnetworks.idreesbigboy -screenshot $S
+            sleep 6; xcrun simctl io $PHONE screenshot "shots/iphone-$S.png"
+          done
+          for S in home today prayer schedule rewards call; do
+            xcrun simctl launch --terminate-running-process $WATCH com.ewsnetworks.idreesbigboy.watchkitapp -screenshot $S
+            sleep 8; xcrun simctl io $WATCH screenshot "shots/watch-$S.png"
+          done
+          xcrun simctl list devices | grep shot
+          sips -g pixelWidth -g pixelHeight shots/*.png
+      - name: Save to the screenshots branch
+        run: |
+          cd shots
+          git init -q && git checkout -q -b screenshots
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git add . && git commit -qm "Screenshots from run ${GITHUB_RUN_NUMBER}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" screenshots

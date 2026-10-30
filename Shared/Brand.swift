@@ -35,3 +35,14 @@ enum Brand {
     /// A non-faith white-label build can set this false to hide them.
     static let islamicFeatures = true
 }
+
+
+/// App Store screenshots: launching with `-screenshot <screen>` opens that screen directly
+/// (used only by .github/workflows/screenshots.yml on the simulator; normal launches never pass it).
+enum ScreenshotMode {
+    static var screen: String? {
+        let args = ProcessInfo.processInfo.arguments
+        guard let i = args.firstIndex(of: "-screenshot"), i + 1 < args.count else { return nil }
+        return args[i + 1]
+    }
+}

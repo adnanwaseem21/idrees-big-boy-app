@@ -3,7 +3,10 @@
 # Signing is Apple's cloud signing with an App Store Connect API key (Admin role), kept in GitHub secrets:
 #   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY (the .p8 file's contents). Nothing secret is in this file.
 name: App Store build
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [ews-release]   # pushing this branch starts an App Store build
 jobs:
   build:
     runs-on: macos-15

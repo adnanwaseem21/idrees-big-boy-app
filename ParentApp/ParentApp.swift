@@ -9,7 +9,15 @@ struct ParentApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if store.settings.setupComplete {
+                if let shot = ScreenshotMode.screen {
+                    switch shot {
+                    case "chores": NavigationStack { TasksEditorView(kind: "chore", title: "Chores") }
+                    case "schedule": NavigationStack { ScheduleEditorView() }
+                    case "rewards": NavigationStack { RewardsEditorView() }
+                    case "review": NavigationStack { ReviewView() }
+                    default: ParentHomeView()
+                    }
+                } else if store.settings.setupComplete {
                     ParentHomeView()
                 } else {
                     OnboardingView()
