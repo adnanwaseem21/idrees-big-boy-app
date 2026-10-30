@@ -30,9 +30,9 @@ jobs:
         run: |
           set -x
           mkdir -p shots
-          pick() { xcrun simctl list devicetypes | grep -E "$1" | tail -1 | sed -E 's/.*\((com\.apple[^)]*)\).*/\1/'; }
+          pick() { xcrun simctl list devicetypes | grep -E "$1" | sed -E 's/^(.*) \((com\.apple[^)]*)\).*/\1|\2/' | sort -t'|' -k1,1V | tail -1 | cut -d'|' -f2; }
           rt() { xcrun simctl list runtimes | grep -E "^$1" | tail -1 | sed -E 's/.* - (com\.apple[^ ]*).*/\1/'; }
-          PHONE=$(xcrun simctl create shotphone "$(pick 'iPhone [0-9]+ Pro Max')" "$(rt iOS)")
+          PHONE=$(xcrun simctl create shotphone "$(pick '^ *iPhone [0-9]+ Pro Max')" "$(rt iOS)")
           WATCH=$(xcrun simctl create shotwatch "$(pick 'Apple Watch Ultra')" "$(rt watchOS)")
           for D in $PHONE $WATCH; do xcrun simctl boot $D; done
           xcrun simctl bootstatus $PHONE -b; xcrun simctl bootstatus $WATCH -b
@@ -48,8 +48,13 @@ jobs:
             sleep 6; xcrun simctl io $PHONE screenshot "shots/iphone-$S.png"
           done
           for S in home today prayer schedule rewards call; do
-            xcrun simctl launch --terminate-running-process $WATCH com.ewsnetworks.idreesbigboy.watchkitapp -screenshot $S
-            sleep 8; xcrun simctl io $WATCH screenshot "shots/watch-$S.png"
+            xcrun simctl terminate $WATCH com.ewsnetworks.idreesbigboy.watchkitapp || true
+            sleep 4
+            for TRY in 1 2 3; do
+              xcrun simctl launch $WATCH com.ewsnetworks.idreesbigboy.watchkitapp -screenshot $S && break
+              sleep 10
+            done
+            sleep 8; xcrun simctl io $WATCH screenshot "shots/watch-$S.png" || true
           done
           xcrun simctl list devices | grep shot
           sips -g pixelWidth -g pixelHeight shots/*.png
