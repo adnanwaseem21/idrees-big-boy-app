@@ -30,6 +30,9 @@ jobs:
         run: |
           set -x
           mkdir -p shots
+          # The family is in New Jersey: prayer times and clocks should read in Eastern time.
+          sudo systemsetup -settimezone America/New_York >/dev/null 2>&1 || sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+          export TZ=America/New_York
           pick() { xcrun simctl list devicetypes | grep -E "$1" | sed -E 's/^(.*) \((com\.apple[^)]*)\).*/\1|\2/' | sort -t'|' -k1,1V | tail -1 | cut -d'|' -f2; }
           rt() { xcrun simctl list runtimes | grep -E "^$1" | tail -1 | sed -E 's/.* - (com\.apple[^ ]*).*/\1/'; }
           PHONE=$(xcrun simctl create shotphone "$(pick '^ *iPhone [0-9]+ Pro Max')" "$(rt iOS)")
