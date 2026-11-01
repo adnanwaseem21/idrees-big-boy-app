@@ -24,9 +24,15 @@ jobs:
           xcodebuild -version
           xcodebuild -project IdreesBigBoyApp.xcodeproj -scheme IdreesBigBoyApp -configuration Release \
             -destination 'generic/platform=iOS' -archivePath build/IdreesBigBoyApp.xcarchive archive \
-            CURRENT_PROJECT_VERSION=$BUILD_NO -allowProvisioningUpdates \
-            -authenticationKeyPath "$RUNNER_TEMP/asc.p8" -authenticationKeyID "${{ secrets.ASC_KEY_ID }}" \
-            -authenticationKeyIssuerID "${{ secrets.ASC_ISSUER_ID }}"
+            CURRENT_PROJECT_VERSION=$BUILD_NO \
+            CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES CODE_SIGNING_REQUIRED=NO \
+            PROVISIONING_PROFILE_SPECIFIER= PROVISIONING_PROFILE= DEVELOPMENT_TEAM=XA76P88S4Q
+          # The archive is only signed locally (the Emergent Wireless team has no test devices, so Xcode
+          # can't make a development profile). The export below re-signs it for the App Store with Apple's
+          # cloud signing and keeps these entitlements (iCloud sync between the phone and the watch).
+          for A in build/IdreesBigBoyApp.xcarchive/Products/Applications/*.app build/IdreesBigBoyApp.xcarchive/Products/Applications/*.app/Watch/*.app; do
+            echo "== $A"; codesign -d --entitlements - "$A" 2>/dev/null | grep -A1 -E "ubiquity|icloud" || true
+          done
       - name: Sign and upload to App Store Connect
         run: |
           xcodebuild -exportArchive -archivePath build/IdreesBigBoyApp.xcarchive -exportOptionsPlist ExportOptions.plist \
