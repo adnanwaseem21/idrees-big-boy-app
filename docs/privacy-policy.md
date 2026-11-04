@@ -17,6 +17,12 @@ app has no servers and no analytics.
 - All settings and your child's progress are stored **on your devices** and
   synced through **your own Apple iCloud account** (Apple's iCloud Key-Value
   storage). We have no access to it.
+- If you link the watch with a **watch code** (needed when the watch uses its
+  own Apple ID, as with Family Setup), the settings, daily progress and
+  memorized surahs are also kept in Apple's iCloud (CloudKit) storage for this
+  app, **encrypted on your device with a key made from your code**. Only
+  devices that know the code can read it; we cannot. Delete it any time in the
+  iPhone app (Watch code → Stop syncing and delete synced data).
 - Contacts and phone numbers you enter stay on your devices and in your
   iCloud. They are used only so the watch can call or message those numbers.
 - Voice notes recorded on the watch stay on the watch.

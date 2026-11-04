@@ -137,6 +137,11 @@ struct WatchCodeView: View {
                         store.pushToWatch()
                         Task { await family.pull() }
                     }
+                    Button("Stop syncing and delete synced data", role: .destructive) {
+                        Task { await family.deleteAndUnlink() }
+                    }
+                } footer: {
+                    Text("Synced data is encrypted with this code, so only your family's devices can read it.")
                 }
             } else {
                 Section {

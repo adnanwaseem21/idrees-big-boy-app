@@ -78,7 +78,9 @@ final class ProgressStore: ObservableObject {
 /// so the iCloud key-value store (which is per Apple ID) never reaches the
 /// parent's phone. Here both devices read and write one record in the app's
 /// CloudKit public database, named after a hash of the code. Only devices
-/// that know the code can find the record. Shared by both targets.
+/// that know the code can find the record, and every field is encrypted
+/// (AES-GCM) with a key made from the code, so only the family's devices can
+/// read it — not Apple's dashboard and not us. Shared by both targets.
 ///
 /// Fields on the "Family" record (all Bytes, JSON):
 /// - settings  — written by the parent app
@@ -138,6 +140,13 @@ final class FamilyCloud: ObservableObject {
         Task { await pull() }
     }
 
+    /// Encryption key from the code (different salt from the record name).
+    private var key: SymmetricKey? {
+        guard let code else { return nil }
+        let digest = SHA256.hash(data: Data(("idreesbigboy-key:" + Self.normalize(code)).utf8))
+        return SymmetricKey(data: Data(digest))
+    }
+
     private var recordID: CKRecord.ID? {
         guard let code else { return nil }
         let hash = SHA256.hash(data: Data(("idreesbigboy:" + Self.normalize(code)).utf8))
@@ -148,9 +157,10 @@ final class FamilyCloud: ObservableObject {
 
     /// Writes one field, leaving the other device's fields alone.
     func push(_ field: String, _ data: Data) {
-        guard let id = recordID else { return }
+        guard let id = recordID, let key,
+              let sealed = try? AES.GCM.seal(data, using: key).combined else { return }
         let record = CKRecord(recordType: Self.recordType, recordID: id)
-        record[field] = data
+        record[field] = sealed
         Task {
             do {
                 _ = try await db.modifyRecords(saving: [record], deleting: [], savePolicy: .changedKeys)
@@ -164,12 +174,16 @@ final class FamilyCloud: ObservableObject {
 
     /// Fetches the record and publishes its fields.
     func pull() async {
-        guard let id = recordID else { return }
+        guard let id = recordID, let key else { return }
         do {
             let record = try await db.record(for: id)
             var fields: [String: Data] = [:]
-            for key in ["settings", "progress", "memorized"] {
-                if let d = record[key] as? Data { fields[key] = d }
+            for name in ["settings", "progress", "memorized"] {
+                if let sealed = record[name] as? Data,
+                   let box = try? AES.GCM.SealedBox(combined: sealed),
+                   let plain = try? AES.GCM.open(box, using: key) {
+                    fields[name] = plain
+                }
             }
             if fields != remote { remote = fields }
             lastSync = Date()
@@ -180,6 +194,14 @@ final class FamilyCloud: ObservableObject {
         } catch {
             lastError = Self.describe(error)
         }
+    }
+
+    /// Deletes the family's record from iCloud and forgets the code here.
+    func deleteAndUnlink() async {
+        if let id = recordID {
+            _ = try? await db.deleteRecord(withID: id)
+        }
+        setCode(nil)
     }
 
     /// Pulls now and every minute while the app is open.
