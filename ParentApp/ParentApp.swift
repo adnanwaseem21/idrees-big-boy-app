@@ -1,7 +1,8 @@
 import SwiftUI
 
 /// The parent's iPhone companion to Idrees's watch app.
-/// Everything edited here syncs to the watch through the family's iCloud.
+/// Everything edited here syncs to the watch through the watch code
+/// (FamilyCloud), which works with a Family Setup watch on its own Apple ID.
 @main
 struct ParentApp: App {
     @StateObject private var store = SettingsStore()
@@ -25,6 +26,7 @@ struct ParentApp: App {
             }
             .environmentObject(store)
             .tint(Brand.accent)
+            .task { if ScreenshotMode.screen == nil { FamilyCloud.shared.start() } }
         }
     }
 }

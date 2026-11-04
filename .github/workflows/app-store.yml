@@ -31,7 +31,7 @@ jobs:
           # can't make a development profile). The export below re-signs it for the App Store with Apple's
           # cloud signing and keeps these entitlements (iCloud sync between the phone and the watch).
           for A in build/IdreesBigBoyApp.xcarchive/Products/Applications/*.app build/IdreesBigBoyApp.xcarchive/Products/Applications/*.app/Watch/*.app; do
-            echo "== $A"; codesign -d --entitlements - "$A" 2>/dev/null | grep -A1 -E "ubiquity|icloud" || true
+            echo "== $A"; codesign -d --entitlements - "$A" 2>/dev/null | grep -A3 -E "ubiquity|icloud" || true
           done
       - name: Sign and upload to App Store Connect
         run: |

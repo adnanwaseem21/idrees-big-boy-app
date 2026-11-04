@@ -16,7 +16,7 @@ struct ReviewView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("No activity yet").font(.headline)
-                        Text("Idrees's progress will appear here once his watch is set up and he starts ticking off prayers and chores. It syncs automatically over iCloud.")
+                        Text("Idrees's progress will appear here once his watch is set up and he starts ticking off prayers and chores. Link his watch with the watch code on the Home screen and it syncs automatically.")
                             .font(.callout).foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 4)
@@ -27,6 +27,7 @@ struct ReviewView: View {
                 stat("🕌", "Prayers", "\(prayers) / \(week.count * 5)")
                 stat("✅", "Chores & activities", "\(tasksDone) / \(tasksTotal)")
                 stat("⭐", "Points earned", "\(points)")
+                stat("📖", "Surahs memorized", "\(progress.memorized.count)")
             }
 
             Section("Day by day") {

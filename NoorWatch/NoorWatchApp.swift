@@ -20,7 +20,14 @@ struct NoorWatchApp: App {
                     .environmentObject(store)
                     .environmentObject(prayers)
                     .environmentObject(voiceNotes)
+                    .onReceive(FamilyCloud.shared.$remote) { fields in
+                        guard let data = fields["settings"] else { return }
+                        LiveSettings.shared.apply(data)
+                        store.objectWillChange.send()
+                        Reminders.rescheduleAll(prayers: prayers)
+                    }
                     .task {
+                        FamilyCloud.shared.start()
                         await Reminders.requestPermission()
                         prayers.refreshLocation()
                         Reminders.rescheduleAll(prayers: prayers)

@@ -4,10 +4,16 @@ struct HomeView: View {
     @EnvironmentObject private var store: KidStore
     @EnvironmentObject private var prayers: PrayerService
     @Environment(\.scenePhase) private var scenePhase
+    @ObservedObject private var family = FamilyCloud.shared
 
     var body: some View {
         NavigationStack {
             List {
+                if family.code == nil && ScreenshotMode.screen == nil {
+                    NavigationLink { WatchLinkView() } label: {
+                        MenuRow(emoji: "🔗", title: "Link to parent's phone", detail: "Type the watch code")
+                    }
+                }
                 TimelineView(.everyMinute) { context in
                     NextPrayerCard(now: context.date)
                 }
@@ -32,7 +38,7 @@ struct HomeView: View {
                 }
                 if FamilyConfig.faithFeaturesOn {
                     NavigationLink { QuranView() } label: {
-                        MenuRow(emoji: "📖", title: "Quran", detail: "Short surahs to memorize")
+                        MenuRow(emoji: "📖", title: "Quran", detail: "\(QuranContent.surahs.count) surahs to memorize")
                     }
                     NavigationLink { DuaView() } label: {
                         MenuRow(emoji: "🤲", title: "Dua & Dhikr", detail: IslamicContent.duaOfTheDay().occasion)
@@ -49,11 +55,17 @@ struct HomeView: View {
                         MenuRow(emoji: "🎮", title: "Games", detail: gamesDetail)
                     }
                 }
+                if family.code != nil {
+                    NavigationLink { WatchLinkView() } label: {
+                        MenuRow(emoji: "🔗", title: "Phone link", detail: family.lastError == nil ? "Linked" : "Not syncing")
+                    }
+                }
             }
             .navigationTitle(Brand.shortName)
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
+                Task { await FamilyCloud.shared.pull() }
                 prayers.refreshLocation()
                 Reminders.rescheduleAll(prayers: prayers)
             }
@@ -119,5 +131,46 @@ struct MenuRow: View {
             }
         }
         .padding(.vertical, 4)
+    }
+}
+
+/// Links the watch to the parent app with the watch code shown on the phone
+/// (Home → Watch code). Works even when the watch has its own Apple ID.
+struct WatchLinkView: View {
+    @ObservedObject private var family = FamilyCloud.shared
+    @State private var typed = ""
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+                if let code = family.code {
+                    Text("Linked").font(.headline)
+                    Text(code).font(.title3.monospaced())
+                    if let error = family.lastError {
+                        Text(error).font(.caption2).foregroundStyle(.orange)
+                    } else if let last = family.lastSync {
+                        Text("Synced \(last.formatted(.relative(presentation: .named)))")
+                            .font(.caption2).foregroundStyle(.secondary)
+                    }
+                    Button("Sync now") { Task { await family.pull() } }
+                        .tint(.green)
+                    Button("Unlink", role: .destructive) { family.setCode(nil) }
+                } else {
+                    Text("On the parent's iPhone, open the app and look for Watch code. Type it here.")
+                        .font(.caption2)
+                    TextField("Watch code", text: $typed)
+                        .textInputAutocapitalization(.characters)
+                        .autocorrectionDisabled()
+                    Button("Link") {
+                        family.setCode(typed)
+                        Haptics.success()
+                    }
+                    .disabled(!FamilyCloud.isValid(typed))
+                    .tint(.green)
+                }
+            }
+            .padding(.vertical, 4)
+        }
+        .navigationTitle("Phone link")
     }
 }

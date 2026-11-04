@@ -1,7 +1,8 @@
 import SwiftUI
 
-/// Short surahs to read and memorize, with a memorized checklist that works
-/// offline. Memorized surahs are remembered on the watch.
+/// Surahs (up to about 10 minutes each) to read and memorize, with a memorized checklist that works
+/// offline. Memorized surahs are remembered on the watch and shown on the
+/// parent's phone once it's linked.
 struct QuranView: View {
     @State private var memorized = MemorizedStore.load()
 
@@ -20,7 +21,7 @@ struct QuranView: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("\(surah.number). \(surah.name)")
                                 .font(.headline)
-                            Text(surah.meaning)
+                            Text("\(surah.meaning) · \(surah.ayahs.count) ayahs · ~\(max(1, Int(surah.minutes.rounded(.up)))) min")
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
                         }
@@ -100,5 +101,9 @@ enum MemorizedStore {
 
     static func save(_ set: Set<Int>) {
         UserDefaults.standard.set(Array(set), forKey: key)
+        // Also shown on the parent's phone (His week).
+        if let data = try? JSONEncoder().encode(set.sorted()) {
+            Task { @MainActor in FamilyCloud.shared.push("memorized", data) }
+        }
     }
 }

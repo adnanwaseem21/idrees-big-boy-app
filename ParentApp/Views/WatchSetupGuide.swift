@@ -18,12 +18,13 @@ struct WatchSetupGuide: View {
             ])
 
             group("2. Install this app on the watch", [
-                "Build it from the project in Xcode, or install via TestFlight once it's uploaded.",
-                "On the paired watch, open the App Store or TestFlight and add it.",
+                "On the watch, open the App Store and search for Idrees Big Boy Watch (with Ask to Buy, approve it on your phone).",
             ])
 
-            group("3. Finish", [
-                "The watch picks up the settings you chose here over iCloud.",
+            group("3. Link the watch", [
+                "In this app, open Home → Watch code.",
+                "On the watch, open the app, tap Link to parent's phone and type the code.",
+                "The watch picks up the settings you chose here, and his progress shows under His week.",
                 "Adjust chores, schedule, contacts and more any time from this app.",
             ])
 

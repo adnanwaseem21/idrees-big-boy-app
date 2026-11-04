@@ -20,12 +20,23 @@ final class LiveSettings {
         cloud.synchronize()
     }
 
+    /// Settings that arrived through the watch code (FamilyCloud).
+    func apply(_ data: Data?) {
+        guard let data, let decoded = try? JSONDecoder().decode(FamilySettings.self, from: data),
+              decoded != current else { return }
+        local.set(data, forKey: key)
+        current = decoded
+    }
+
     @objc private func reload() {
         current = Self.read(cloud: cloud, local: local, key: key)
     }
 
     private static func read(cloud: NSUbiquitousKeyValueStore, local: UserDefaults, key: String) -> FamilySettings {
-        if let data = cloud.data(forKey: key) ?? local.data(forKey: key),
+        // Once linked with a watch code, the copy from the code wins over the
+        // (per Apple ID) key-value store.
+        let linked = local.string(forKey: "familyCode") != nil
+        if let data = linked ? (local.data(forKey: key) ?? cloud.data(forKey: key)) : (cloud.data(forKey: key) ?? local.data(forKey: key)),
            let decoded = try? JSONDecoder().decode(FamilySettings.self, from: data) {
             return decoded
         }
@@ -46,6 +57,7 @@ enum KidProgressWriter {
         if let data = try? JSONEncoder().encode(progress) {
             cloud.set(data, forKey: key)
             cloud.synchronize()
+            Task { @MainActor in FamilyCloud.shared.push("progress", data) }
         }
     }
 
