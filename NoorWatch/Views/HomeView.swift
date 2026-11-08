@@ -1,15 +1,19 @@
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     @EnvironmentObject private var store: KidStore
     @EnvironmentObject private var prayers: PrayerService
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject private var family = FamilyCloud.shared
+    // Only the link state, not the whole sync object: its "last synced"
+    // time changes every minute and redrawing the menu made it stop scrolling.
+    @State private var linked = FamilyCloud.shared.code != nil
+    @State private var syncing = FamilyCloud.shared.lastError == nil
 
     var body: some View {
         NavigationStack {
             List {
-                if family.code == nil && ScreenshotMode.screen == nil {
+                if !linked && ScreenshotMode.screen == nil {
                     NavigationLink { WatchLinkView() } label: {
                         MenuRow(emoji: "🔗", title: "Link to parent's phone", detail: "Type the watch code")
                     }
@@ -55,14 +59,16 @@ struct HomeView: View {
                         MenuRow(emoji: "🎮", title: "Games", detail: gamesDetail)
                     }
                 }
-                if family.code != nil {
+                if linked {
                     NavigationLink { WatchLinkView() } label: {
-                        MenuRow(emoji: "🔗", title: "Phone link", detail: family.lastError == nil ? "Linked" : "Not syncing")
+                        MenuRow(emoji: "🔗", title: "Phone link", detail: syncing ? "Linked" : "Not syncing")
                     }
                 }
             }
             .navigationTitle(Brand.shortName)
         }
+        .onReceive(FamilyCloud.shared.$code.removeDuplicates()) { linked = $0 != nil }
+        .onReceive(FamilyCloud.shared.$lastError.map { $0 == nil }.removeDuplicates()) { syncing = $0 }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 Task { await FamilyCloud.shared.pull() }

@@ -7,8 +7,6 @@ import Adhan
 @MainActor
 final class PrayerService: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published private(set) var coordinates: Coordinates
-    /// Compass direction the watch is facing, in degrees from north.
-    @Published private(set) var heading: Double?
 
     private let manager = CLLocationManager()
 
@@ -66,17 +64,6 @@ final class PrayerService: NSObject, ObservableObject, CLLocationManagerDelegate
         }
     }
 
-    func startHeading() {
-        if CLLocationManager.headingAvailable() {
-            manager.startUpdatingHeading()
-        }
-    }
-
-    func stopHeading() {
-        manager.stopUpdatingHeading()
-        heading = nil
-    }
-
     private func save(latitude: Double, longitude: Double) {
         let store = UserDefaults.standard
         let moved = abs(latitude - store.double(forKey: "lastLatitude")) > 0.05
@@ -102,6 +89,34 @@ final class PrayerService: NSObject, ObservableObject, CLLocationManagerDelegate
 
     nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // No fix (e.g. indoors). The saved location keeps prayer times working.
+    }
+}
+
+/// The Qibla compass. Kept apart from PrayerService and owned by the Qibla
+/// screen only, so compass readings (many per second) never redraw the
+/// other screens. That redrawing stopped lists from scrolling on the watch.
+@MainActor
+final class Compass: NSObject, ObservableObject, CLLocationManagerDelegate {
+    /// Direction the watch is facing, in degrees from north.
+    @Published private(set) var heading: Double?
+
+    private let manager = CLLocationManager()
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.headingFilter = 3 // only report turns of 3 degrees or more
+    }
+
+    func start() {
+        if CLLocationManager.headingAvailable() {
+            manager.startUpdatingHeading()
+        }
+    }
+
+    func stop() {
+        manager.stopUpdatingHeading()
+        heading = nil
     }
 
     nonisolated func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

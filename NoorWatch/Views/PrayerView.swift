@@ -5,22 +5,24 @@ struct PrayerView: View {
     @EnvironmentObject private var prayers: PrayerService
 
     var body: some View {
-        TimelineView(.everyMinute) { context in
-            List {
-                if let times = prayers.times(on: context.date) {
-                    ForEach(Salah.allCases) { salah in
+        // The clock ticks inside each row, not around the whole list:
+        // rebuilding the list every minute made it jump and stop scrolling.
+        List {
+            if let times = prayers.times(on: Date()) {
+                ForEach(Salah.allCases) { salah in
+                    TimelineView(.everyMinute) { context in
                         PrayerRow(salah: salah, time: times.time(salah), now: context.date)
                     }
                 }
-                Section {
-                    Text("🔥 \(store.prayerStreak)-day streak of all 5 prayers")
-                        .font(.caption)
-                    NavigationLink { QiblaView() } label: {
-                        MenuRow(emoji: "🧭", title: "Qibla")
-                    }
-                    NavigationLink { TasbihView() } label: {
-                        MenuRow(emoji: "📿", title: "Tasbih after salah")
-                    }
+            }
+            Section {
+                Text("🔥 \(store.prayerStreak)-day streak of all 5 prayers")
+                    .font(.caption)
+                NavigationLink { QiblaView() } label: {
+                    MenuRow(emoji: "🧭", title: "Qibla")
+                }
+                NavigationLink { TasbihView() } label: {
+                    MenuRow(emoji: "📿", title: "Tasbih after salah")
                 }
             }
         }
@@ -62,10 +64,12 @@ struct PrayerRow: View {
 
 struct QiblaView: View {
     @EnvironmentObject private var prayers: PrayerService
+    @StateObject private var compass = Compass()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         VStack(spacing: 8) {
-            if let heading = prayers.heading {
+            if let heading = compass.heading {
                 let turn = normalized(prayers.qiblaDirection - heading)
                 let facing = turn < 8 || turn > 352
                 Image(systemName: "location.north.fill")
@@ -84,8 +88,11 @@ struct QiblaView: View {
             }
         }
         .navigationTitle("Qibla")
-        .onAppear { prayers.startHeading() }
-        .onDisappear { prayers.stopHeading() }
+        .onAppear { compass.start() }
+        .onDisappear { compass.stop() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { compass.start() } else { compass.stop() }
+        }
     }
 
     private func normalized(_ degrees: Double) -> Double {
