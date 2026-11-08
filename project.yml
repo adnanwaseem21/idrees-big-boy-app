@@ -39,7 +39,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ewsnetworks.idreesbigboy
         INFOPLIST_KEY_CFBundleDisplayName: Idrees Big Boy App
-        MARKETING_VERSION: "1.1"
+        MARKETING_VERSION: "1.1.1"
         CURRENT_PROJECT_VERSION: "3"
         ITSAppUsesNonExemptEncryption: NO
         CODE_SIGN_ENTITLEMENTS: ParentApp/ParentApp.entitlements
@@ -68,7 +68,7 @@ targets:
         INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: YES
         INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Used to calculate prayer times and the Qibla, and to show %@ in Find My."
         INFOPLIST_KEY_NSMicrophoneUsageDescription: "Used to record voice notes."
-        MARKETING_VERSION: "1.1"
+        MARKETING_VERSION: "1.1.1"
         CURRENT_PROJECT_VERSION: "3"
         CODE_SIGN_ENTITLEMENTS: NoorWatch/NoorWatch.entitlements
         GENERATE_INFOPLIST_FILE: YES
